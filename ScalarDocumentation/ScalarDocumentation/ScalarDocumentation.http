@@ -1,0 +1,6 @@
+@ScalarDocumentation_HostAddress = http://localhost:5208
+
+GET {{ScalarDocumentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
