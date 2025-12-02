@@ -2,7 +2,7 @@
 
 public static class DocumentationExtensions
 {
-    public static IServiceCollection AddDocumentationVersioningConfig(this IServiceCollection services, IConfiguration configuration, List<string> versions)
+    public static IServiceCollection AddDocumentationVersioningConfig(this IServiceCollection services, List<string> versions)
     {
         services.AddApiVersioning(options =>
         {

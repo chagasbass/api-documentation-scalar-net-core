@@ -1,7 +1,10 @@
 ﻿global using Asp.Versioning;
 global using Asp.Versioning.Builder;
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.OpenApi;
 global using Microsoft.Extensions.Options;
 global using Microsoft.OpenApi;
 global using Scalar.AspNetCore;
 global using ScalarDocumentation.Extensions;
+global using ScalarDocumentation.Weathers.Endpoints;
+global using System.Collections.Immutable;

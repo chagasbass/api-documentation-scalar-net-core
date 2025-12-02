@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 var versions = new List<string> { "v1", "v2" };
 
 builder.Services.ConfigureDocumentationOptions(builder.Configuration);
-builder.Services.AddDocumentationVersioningConfig(builder.Configuration, versions);
+builder.Services.AddDocumentationVersioningConfig(versions);
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
@@ -13,11 +13,10 @@ var app = builder.Build();
 
 app.MapOpenApi();
 app.UseScalarDocumentation();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 
 WeathersEndpointExtensions.InicializarEndpoints(app);
 
-app.Run();
+await app.RunAsync();

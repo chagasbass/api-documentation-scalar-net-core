@@ -1,7 +1,4 @@
-using Asp.Versioning;
-using Microsoft.AspNetCore.Mvc;
-using Scalar.AspNetCore;
-using System.Collections.Immutable;
+namespace ScalarDocumentation.Weathers.Endpoints;
 
 public static class WeathersEndpointExtensions
 {
