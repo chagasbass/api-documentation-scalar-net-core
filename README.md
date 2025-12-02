@@ -1,7 +1,7 @@
 ## Documentação da Extensão Scalar para Minimal APIs ASP.NET Core
 
 ### 📋 Visão Geral
-Esta extensão proporciona uma solução completa para documentação e versionamento de APIs em projetos ASP.NET Core Minimal APIs, utilizando Scalar como interface de usuário e OpenAPI como padrão de especificação.
+Esta extensão proporciona uma solução completa para documentação e versionamento de APIs via **Url** em projetos Minimal APIs ASP.NET Core versão 10, utilizando Scalar como interface de usuário e OpenAPI como padrão de especificação.
 
 ---
 
@@ -68,7 +68,7 @@ public class DocumentationConfigurationOptions
 public class ApiMetadataTransformer : IOpenApiDocumentTransformer
 ``` 
 
-**Propósito**: Intercepta e personaliza o documento OpenAPI antes da renderização.
+**Propósito**: Intercepta e personaliza o documento OpenAPI antes da renderização.Necessário para a customização das informações do arquivo OPEN API.
 
 #### Funcionalidades:
 
@@ -105,9 +105,9 @@ public static IServiceCollection AddDocumentationVersioningConfig(
 
 #### Configurações realizadas:
 
-- **API Versioning**: Configura versionamento padrão e relatório de versões
-- **API Explorer**: Formata nomes de grupos e substituição de versão na URL
-- **OpenAPI por versão**: Registra documentos OpenAPI para cada versão
+- **API Versioning**: Configura versionamento padrão e relatório de versões.
+- **API Explorer**: Formata nomes de grupos e substituição de versão na URL.
+- **OpenAPI por versão**: Registra documentos OpenAPI para cada versão.
 
 <br>
 
@@ -362,14 +362,25 @@ public static ApiVersionSet RetornarVersaoDeEndpoints(WebApplication app)
         .ReportApiVersions()
         .Build();
 }
+
+```
+
+// No Endpoint
+
+- Na chamada do endpoint,usar os métodos de extensão **WithApiVersionSet** passando o objeto de versionamento de endpoints e  **MapToApiVersion** passando a versão desejada.
+
+``` csharp
+.WithApiVersionSet(apiVersionSet)
+.MapToApiVersion(new ApiVersion(1, 0));
+
 ```
 
 ### 📝 Boas Práticas
 
 1. Nomeclatura de Endpoints
 **text
-/v{version}/[recurso]/[ação]**
-Exemplo: **/v1/pedidos/processar**
+/v{version}/[recurso]/**
+Exemplo: **/v1/pedidos/**
 
 2. Documentação de Endpoints
 
